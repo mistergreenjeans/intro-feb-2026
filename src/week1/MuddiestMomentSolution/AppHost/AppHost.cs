@@ -11,6 +11,7 @@ var postGres = builder.AddPostgres("db-server")
 var mmDb = postGres.AddDatabase("db-mm");
 
 
+
 var mmApi = builder.AddProject<Projects.MuddiestMoment_Api>("mm-api")
     .WithReference(mmDb)
     .WaitFor(mmDb);
@@ -18,7 +19,5 @@ var mmApi = builder.AddProject<Projects.MuddiestMoment_Api>("mm-api")
 var gateway = builder.AddProject<Projects.Gateway_Api>("gateway")
     .WithReference(mmApi)
     .WaitFor(mmApi);
-
-builder.AddProject<Projects.ServiceDefaults>("servicedefaults");
 
 builder.Build().Run();

@@ -1,5 +1,7 @@
 var builder = WebApplication.CreateBuilder(args);
+// configure this application to use the settings that are shared across all APIs in this solution
 builder.AddServiceDefaults();
+
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
@@ -33,7 +35,8 @@ app.MapGet("/weatherforecast", () =>
 })
 .WithName("GetWeatherForecast");
 
-app.MapDefaultEndpoints();
+
+app.MapDefaultEndpoints(); // the health checks and all that.
 app.Run();
 
 internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
