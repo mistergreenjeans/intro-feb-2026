@@ -1,17 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Security.Principal;
-using System.Text;
-
+﻿
 
 using Banking.Domain;
-namespace Banking.Tests.NewAccouts;
+
+namespace Banking.Tests.NewAccounts;
 
 public class HaveCorrectBalance
 {
     [Fact]
     public void BalanceIsCorrect()
     {
+        // WTCYWYH - Write the code you wish you had.
         var myAccount = new Account();
+
+        decimal openingBalace = myAccount.GetBalance();
+        
+        // Fails on the Assert.
+        Assert.Equal(5000M, openingBalace);
     }
 }
