@@ -1,26 +1,45 @@
 ﻿
+
+
 namespace Banking.Domain;
 
 public class Account
 {
-    decimal balance = 5000;
-    public void Deposit(decimal amountToDeposit)
+    private decimal _currentBalance = 5000M;
+
+    public void Deposit(TransactionAmount amountToDeposit)
     {
-       
-        balance += amountToDeposit;
+        // if the amountToDeposit is 0 or less, throw an exception - abnormal end.
+
+        _currentBalance += amountToDeposit;
     }
 
     public decimal GetBalance()
     {
-        return balance; // Fake. Bs. Slime. 
+
+        return _currentBalance;
     }
 
-    public void Withdraw(decimal amountToWithdraw)
+    // Primitive Obsession 
+    // You can call this with any decimal value and it will work. 
+    public void Withdraw(TransactionAmount amountToWithdraw)
     {
-        if(amountToWithdraw <= balance && amountToWithdraw >= 0)
+
+        if (WouldCauseOverdraft(amountToWithdraw))
         {
-            balance -= amountToWithdraw;
+            // exit with an exception - abnormal end.
+            throw new OverdraftNotAllowedException();
         }
-        
+        _currentBalance -= amountToWithdraw;
+
+
     }
+
+    private bool WouldCauseOverdraft(decimal amountToWithdraw)
+    {
+        return amountToWithdraw > _currentBalance;
+    }
+
 }
+
+public class OverdraftNotAllowedException : ArgumentOutOfRangeException { }

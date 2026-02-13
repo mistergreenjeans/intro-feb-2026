@@ -12,7 +12,7 @@ public class Calculator
             var current = 0;
             if (int.TryParse(number, out current))
             {
-                sum += current;
+                sum += current; 
             }
         }
         
