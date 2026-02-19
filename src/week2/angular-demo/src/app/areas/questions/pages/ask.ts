@@ -1,10 +1,10 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'app-profile-page',
+  selector: 'app-questions-ask',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [],
-  template: ` <p>This is the profile page</p> `,
+  template: ` <form></form> `,
   styles: ``,
 })
-export class Profile {}
+export class Ask {}
