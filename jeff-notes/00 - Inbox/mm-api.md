@@ -43,18 +43,30 @@ Content-Type: application/json
 Authorization: Bearer ???? (Fake this for while)
 
 {
-    "title": "HTTP",
-    "description": "More On Resources, plz."
+    "title": "Containers",
+    "description": "Tell me about volumes"
 }
 
 ```
 
+1. Get of the 404 - 
+    - if it is good, something in the range of 200-299.
+    - if the user made a bad request, those are 400-499
+        - If you don't an authoriztion header that we trust, 401.
+        - If I know who are are (you are authenticated), but, seriously, take this personally, YOU cannot do that - 403.
+        - 400 - You screwed up.
+            - general bad request
+    - Any success Status Code - would be 200-299
+        - 200 Ok. With a body.
+
 
 ```http
 GET https://localhost:1337/student/moments 
-Authorization: why
+
 ```
 
+```http
+DELETE https://localhost:1337/student/moments/82c4721b-734e-4c76-911b-e50ef3590b31
 
 ```
 200 Ok
@@ -113,8 +125,6 @@ Say "I don't want to lose this, but I promise I'll talk about it later"
     - GET means "get" - I wanna see it. No "side effects"
     - POST means different things depending on the kind of resource - but on a "collection" resource it means something like:
         "Excuse me ma'am, I'd like you to consider taking this representation I am sending you and making part of your family"
-
-
 
     
 
